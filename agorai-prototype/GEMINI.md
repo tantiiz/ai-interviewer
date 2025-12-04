@@ -44,6 +44,7 @@
 9. Mobile responsive
 10. Desktop responsive
 11. Human Centered Design
+12. Dark Mode / Light Mode toggle
 
 ## Technical Stack
 1. HTML
@@ -56,3 +57,4 @@
 2. @[agorai-prototype/index.html] revise this landing page depends on the design of the other html files provided and add this logo for the Agorai  and just adjust it to make to make it simple and became good placement.
 3. make the register functional store the information as jason
 4. make the sidebar scrolable
+5. can you try to add all the file or connect it for making a Dark Mode / Light Mode toggle for it to make it a universal usability. just put it on the left side navbar. or it depends where is the best placement. make it functional
