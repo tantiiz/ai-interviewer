@@ -11,8 +11,10 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
         rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/theme.js"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -33,14 +35,16 @@
     </script>
 </head>
 
-<body class="bg-slate-50 text-slate-800 font-sans antialiased h-screen flex overflow-hidden">
+<body
+    class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 dark:text-slate-100 font-sans antialiased h-screen flex overflow-hidden">
     <!-- Left Sidebar -->
-    <aside class="w-64 bg-white border-r border-slate-100 flex flex-col z-20 hidden md:flex">
+    <aside
+        class="w-64 bg-white dark:bg-slate-800 border-r border-slate-100 dark:border-slate-700 flex flex-col z-20 hidden md:flex">
         <!-- Logo -->
         <div class="h-20 flex items-center px-8">
             <a href="index.html" class="flex items-center gap-2">
                 <img src="assets/images/logo.png" alt="Agorai Logo" class="w-8 h-8">
-                <span class="font-heading font-bold text-xl text-slate-800">Agorai</span>
+                <span class="font-heading font-bold text-xl text-slate-800 dark:text-slate-100">Agorai</span>
             </a>
         </div>
         <!-- Nav -->
@@ -50,25 +54,29 @@
                 <i class="fas fa-th-large w-5"></i> Dashboard
             </a>
             <a href="postjob.html"
-                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 dark:text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
                 <i class="fas fa-briefcase w-5"></i> Post a Job
             </a>
             <a href="manage-applications.html"
-                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 dark:text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
                 <i class="fas fa-file-alt w-5"></i> Applications
             </a>
             <!-- <a href="#"
-                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 dark:text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
                 <i class="fas fa-users w-5"></i> Team
             </a>
             <a href="#"
-                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 dark:text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
                 <i class="fas fa-wallet w-5"></i> Billing
             </a>
             <a href="#"
-                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 dark:text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
                 <i class="fas fa-chart-bar w-5"></i> Reports
             </a> -->
+            <button onclick="toggleTheme()"
+                class="w-full flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 dark:text-slate-500 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:text-slate-500 dark:hover:bg-slate-700 dark:hover:text-white rounded-xl font-medium transition-colors">
+                <i class="fas fa-moon w-5"></i> Dark Mode
+            </button>
         </nav>
         <!-- Upgrade Card -->
         <div class="p-4">
@@ -93,16 +101,17 @@
     <main class="flex-1 flex flex-col overflow-hidden relative">
         <!-- Header -->
         <header
-            class="h-20 bg-white/50 backdrop-blur-sm border-b border-slate-100 flex items-center justify-between px-8 sticky top-0 z-10">
+            class="h-20 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border-b border-slate-100 dark:border-slate-700 flex items-center justify-between px-8 sticky top-0 z-10">
             <div>
-                <h1 class="text-2xl font-bold text-slate-800 font-heading">Dashboard</h1>
-                <p class="text-xs text-slate-400">4 December 2025, Wednesday</p>
+                <h1 class="text-2xl font-bold text-slate-800 dark:text-slate-100 font-heading">Dashboard</h1>
+                <p class="text-xs text-slate-400 dark:text-slate-500">4 December 2025, Wednesday</p>
             </div>
             <div class="flex items-center gap-4">
                 <div class="relative">
                     <input type="text" placeholder="Search..."
                         class="pl-10 pr-4 py-2 bg-white rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none w-64 transition-all">
-                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <i
+                        class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500"></i>
                 </div>
             </div>
         </header>
@@ -114,8 +123,9 @@
                 <div
                     class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex items-center justify-between">
                     <div>
-                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Applications</div>
-                        <div class="text-3xl font-bold text-slate-800">12.2 K</div>
+                        <div class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1">
+                            Applications</div>
+                        <div class="text-3xl font-bold text-slate-800 dark:text-slate-100">12.2 K</div>
                     </div>
                     <div class="relative w-16 h-16 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
@@ -131,8 +141,9 @@
                 <div
                     class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex items-center justify-between">
                     <div>
-                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Shortlisted</div>
-                        <div class="text-3xl font-bold text-slate-800">11.1 K</div>
+                        <div class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1">
+                            Shortlisted</div>
+                        <div class="text-3xl font-bold text-slate-800 dark:text-slate-100">11.1 K</div>
                     </div>
                     <div class="relative w-16 h-16 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
@@ -148,8 +159,9 @@
                 <div
                     class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex items-center justify-between">
                     <div>
-                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">On-Hold</div>
-                        <div class="text-3xl font-bold text-slate-800">6.8 K</div>
+                        <div class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1">
+                            On-Hold</div>
+                        <div class="text-3xl font-bold text-slate-800 dark:text-slate-100">6.8 K</div>
                     </div>
                     <div class="relative w-16 h-16 flex items-center justify-center">
                         <svg class="w-full h-full transform -rotate-90">
@@ -169,17 +181,17 @@
                     <!-- Chart Section -->
                     <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
                         <div class="flex justify-between items-center mb-6">
-                            <h3 class="font-bold text-lg text-slate-800">Top Active Jobs</h3>
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100">Top Active Jobs</h3>
                             <div class="flex gap-4">
                                 <label
-                                    class="flex items-center gap-2 text-xs font-medium text-slate-600 cursor-pointer">
+                                    class="flex items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-300 cursor-pointer">
                                     <div class="w-8 h-4 bg-purple-500 rounded-full relative">
                                         <div class="w-2 h-2 bg-white rounded-full absolute top-1 right-1"></div>
                                     </div>
                                     Applications
                                 </label>
                                 <label
-                                    class="flex items-center gap-2 text-xs font-medium text-slate-600 cursor-pointer">
+                                    class="flex items-center gap-2 text-xs font-medium text-slate-600 dark:text-slate-300 cursor-pointer">
                                     <div class="w-8 h-4 bg-cyan-400 rounded-full relative">
                                         <div class="w-2 h-2 bg-white rounded-full absolute top-1 right-1"></div>
                                     </div>
@@ -195,25 +207,26 @@
                     <!-- Job List -->
                     <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
                         <div class="flex justify-between items-center mb-4">
-                            <h3 class="font-bold text-lg text-slate-800">Job Title</h3>
-                            <span class="text-xs font-bold text-slate-400 uppercase">Applications</span>
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100">Job Title</h3>
+                            <span
+                                class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase">Applications</span>
                         </div>
                         <div class="space-y-4">
                             <div
                                 class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-xl transition-colors">
-                                <span class="font-medium text-slate-700">Full Stack Developer</span>
+                                <span class="font-medium text-slate-700 dark:text-slate-200">Full Stack Developer</span>
                                 <div class="flex items-center gap-4">
-                                    <span class="font-bold text-slate-800">203</span>
+                                    <span class="font-bold text-slate-800 dark:text-slate-100">203</span>
                                     <button
-                                        class="w-8 h-8 rounded-lg border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-colors"><i
+                                        class="w-8 h-8 rounded-lg border border-slate-200 flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-primary hover:border-primary transition-colors"><i
                                             class="fas fa-chevron-right"></i></button>
                                 </div>
                             </div>
                             <div
                                 class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-xl transition-colors">
-                                <span class="font-medium text-slate-700">iOS Developer</span>
+                                <span class="font-medium text-slate-700 dark:text-slate-200">iOS Developer</span>
                                 <div class="flex items-center gap-4">
-                                    <span class="font-bold text-slate-800">121</span>
+                                    <span class="font-bold text-slate-800 dark:text-slate-100">121</span>
                                     <button
                                         class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center shadow-md shadow-primary/30"><i
                                             class="fas fa-chevron-right"></i></button>
@@ -221,21 +234,21 @@
                             </div>
                             <div
                                 class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-xl transition-colors">
-                                <span class="font-medium text-slate-700">Product Designer</span>
+                                <span class="font-medium text-slate-700 dark:text-slate-200">Product Designer</span>
                                 <div class="flex items-center gap-4">
-                                    <span class="font-bold text-slate-800">95</span>
+                                    <span class="font-bold text-slate-800 dark:text-slate-100">95</span>
                                     <button
-                                        class="w-8 h-8 rounded-lg border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-colors"><i
+                                        class="w-8 h-8 rounded-lg border border-slate-200 flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-primary hover:border-primary transition-colors"><i
                                             class="fas fa-chevron-right"></i></button>
                                 </div>
                             </div>
                             <div
                                 class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-xl transition-colors">
-                                <span class="font-medium text-slate-700">Design Lead</span>
+                                <span class="font-medium text-slate-700 dark:text-slate-200">Design Lead</span>
                                 <div class="flex items-center gap-4">
-                                    <span class="font-bold text-slate-800">76</span>
+                                    <span class="font-bold text-slate-800 dark:text-slate-100">76</span>
                                     <button
-                                        class="w-8 h-8 rounded-lg border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-colors"><i
+                                        class="w-8 h-8 rounded-lg border border-slate-200 flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-primary hover:border-primary transition-colors"><i
                                             class="fas fa-chevron-right"></i></button>
                                 </div>
                             </div>
@@ -248,7 +261,7 @@
                     <!-- Acquisitions -->
                     <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
                         <div class="flex justify-between items-center mb-6">
-                            <h3 class="font-bold text-lg text-slate-800">Acquisitions</h3>
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100">Acquisitions</h3>
                             <span class="text-xs text-primary font-medium bg-primary/10 px-2 py-1 rounded-lg">This
                                 Month</span>
                         </div>
@@ -262,30 +275,30 @@
                             <div class="flex justify-between items-center text-sm">
                                 <div class="flex items-center gap-2">
                                     <div class="w-2 h-2 rounded-full bg-purple-500"></div> <span
-                                        class="text-slate-600">Applications</span>
+                                        class="text-slate-600 dark:text-slate-300">Applications</span>
                                 </div>
-                                <span class="font-bold text-slate-800">64%</span>
+                                <span class="font-bold text-slate-800 dark:text-slate-100">64%</span>
                             </div>
                             <div class="flex justify-between items-center text-sm">
                                 <div class="flex items-center gap-2">
                                     <div class="w-2 h-2 rounded-full bg-cyan-400"></div> <span
-                                        class="text-slate-600">Shortlisted</span>
+                                        class="text-slate-600 dark:text-slate-300">Shortlisted</span>
                                 </div>
-                                <span class="font-bold text-slate-800">18%</span>
+                                <span class="font-bold text-slate-800 dark:text-slate-100">18%</span>
                             </div>
                             <div class="flex justify-between items-center text-sm">
                                 <div class="flex items-center gap-2">
                                     <div class="w-2 h-2 rounded-full bg-orange-400"></div> <span
-                                        class="text-slate-600">On-hold</span>
+                                        class="text-slate-600 dark:text-slate-300">On-hold</span>
                                 </div>
-                                <span class="font-bold text-slate-800">10%</span>
+                                <span class="font-bold text-slate-800 dark:text-slate-100">10%</span>
                             </div>
                             <div class="flex justify-between items-center text-sm">
                                 <div class="flex items-center gap-2">
                                     <div class="w-2 h-2 rounded-full bg-red-400"></div> <span
-                                        class="text-slate-600">Rejected</span>
+                                        class="text-slate-600 dark:text-slate-300">Rejected</span>
                                 </div>
-                                <span class="font-bold text-slate-800">8%</span>
+                                <span class="font-bold text-slate-800 dark:text-slate-100">8%</span>
                             </div>
                         </div>
                     </div>
@@ -293,7 +306,7 @@
                     <!-- New Applicants -->
                     <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
                         <div class="flex justify-between items-center mb-6">
-                            <h3 class="font-bold text-lg text-slate-800">New Applicants</h3>
+                            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100">New Applicants</h3>
                             <span
                                 class="text-xs text-primary font-medium bg-primary/10 px-2 py-1 rounded-lg">Today</span>
                         </div>
@@ -302,45 +315,54 @@
                                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Douglas"
                                     class="w-10 h-10 rounded-full bg-slate-100">
                                 <div>
-                                    <div class="font-bold text-sm text-slate-800">Douglas Ray</div>
-                                    <div class="text-xs text-slate-500">Applied for <span
-                                            class="text-slate-700 font-medium">iOS Developer</span></div>
+                                    <div class="font-bold text-sm text-slate-800 dark:text-slate-100">Douglas Ray</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-500">Applied
+                                        for <span class="text-slate-700 dark:text-slate-200 font-medium">iOS
+                                            Developer</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex items-center gap-3">
                                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Elizabeth"
                                     class="w-10 h-10 rounded-full bg-slate-100">
                                 <div>
-                                    <div class="font-bold text-sm text-slate-800">Elizabeth Martin</div>
-                                    <div class="text-xs text-slate-500">Applied for <span
-                                            class="text-slate-700 font-medium">Full Stack Developer</span></div>
+                                    <div class="font-bold text-sm text-slate-800 dark:text-slate-100">Elizabeth Martin
+                                    </div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-500">Applied
+                                        for <span class="text-slate-700 dark:text-slate-200 font-medium">Full Stack
+                                            Developer</span></div>
                                 </div>
                             </div>
                             <div class="flex items-center gap-3">
                                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Emma"
                                     class="w-10 h-10 rounded-full bg-slate-100">
                                 <div>
-                                    <div class="font-bold text-sm text-slate-800">Emma Wade</div>
-                                    <div class="text-xs text-slate-500">Applied for <span
-                                            class="text-slate-700 font-medium">Product Designer</span></div>
+                                    <div class="font-bold text-sm text-slate-800 dark:text-slate-100">Emma Wade</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-500">Applied
+                                        for <span class="text-slate-700 dark:text-slate-200 font-medium">Product
+                                            Designer</span></div>
                                 </div>
                             </div>
                             <div class="flex items-center gap-3">
                                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Teresa"
                                     class="w-10 h-10 rounded-full bg-slate-100">
                                 <div>
-                                    <div class="font-bold text-sm text-slate-800">Teresa Reyes</div>
-                                    <div class="text-xs text-slate-500">Applied for <span
-                                            class="text-slate-700 font-medium">Design Lead</span></div>
+                                    <div class="font-bold text-sm text-slate-800 dark:text-slate-100">Teresa Reyes</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-500">Applied
+                                        for <span class="text-slate-700 dark:text-slate-200 font-medium">Design
+                                            Lead</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="flex items-center gap-3">
                                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Crystal"
                                     class="w-10 h-10 rounded-full bg-slate-100">
                                 <div>
-                                    <div class="font-bold text-sm text-slate-800">Crystal Austin</div>
-                                    <div class="text-xs text-slate-500">Applied for <span
-                                            class="text-slate-700 font-medium">Marketing Manager</span></div>
+                                    <div class="font-bold text-sm text-slate-800 dark:text-slate-100">Crystal Austin
+                                    </div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-500">Applied
+                                        for <span class="text-slate-700 dark:text-slate-200 font-medium">Marketing
+                                            Manager</span></div>
                                 </div>
                             </div>
                         </div>
@@ -358,23 +380,26 @@
                 <img src="https://ui-avatars.com/api/?name=Angelina+Julie&background=FFEDD5&color=C2410C"
                     class="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-orange-50">
             </div>
-            <h3 class="font-bold text-lg text-slate-800">Angelina Julie</h3>
-            <p class="text-sm text-slate-500">Recruiting Manager</p>
+            <h3 class="font-bold text-lg text-slate-800 dark:text-slate-100">Angelina Julie</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 dark:text-slate-500">Recruiting Manager</p>
         </div>
 
         <!-- Messages -->
         <div class="p-6 border-b border-slate-100 flex-1 overflow-y-auto">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="font-bold text-slate-800">Messages</h3>
-                <button class="text-slate-400 hover:text-primary"><i class="far fa-edit"></i></button>
+                <h3 class="font-bold text-slate-800 dark:text-slate-100">Messages</h3>
+                <button class="text-slate-400 dark:text-slate-500 hover:text-primary"><i
+                        class="far fa-edit"></i></button>
             </div>
             <div class="space-y-4">
                 <div class="flex items-start gap-3">
                     <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Carol"
                         class="w-10 h-10 rounded-full bg-slate-100">
                     <div>
-                        <div class="font-bold text-sm text-slate-800">Carol Ferdina</div>
-                        <p class="text-xs text-slate-500 line-clamp-2">Have you planned for any deadline regarding
+                        <div class="font-bold text-sm text-slate-800 dark:text-slate-100">Carol Ferdina</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-500 line-clamp-2">Have you
+                            planned for any
+                            deadline regarding
                             the...</p>
                     </div>
                 </div>
@@ -382,8 +407,10 @@
                     <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Rob"
                         class="w-10 h-10 rounded-full bg-slate-100">
                     <div>
-                        <div class="font-bold text-sm text-slate-800">Rob Dial</div>
-                        <p class="text-xs text-slate-500 line-clamp-2">The candidate has been shortlisted for the...</p>
+                        <div class="font-bold text-sm text-slate-800 dark:text-slate-100">Rob Dial</div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 dark:text-slate-500 line-clamp-2">The
+                            candidate has been
+                            shortlisted for the...</p>
                     </div>
                 </div>
             </div>
@@ -392,8 +419,9 @@
         <!-- Activity -->
         <div class="p-6 flex-1 overflow-y-auto">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="font-bold text-slate-800">Activity</h3>
-                <button class="text-slate-400 hover:text-primary"><i class="far fa-bell"></i></button>
+                <h3 class="font-bold text-slate-800 dark:text-slate-100">Activity</h3>
+                <button class="text-slate-400 dark:text-slate-500 hover:text-primary"><i
+                        class="far fa-bell"></i></button>
             </div>
             <div class="space-y-6 relative">
                 <!-- Timeline Line -->
@@ -405,8 +433,8 @@
                         <i class="fas fa-exclamation"></i>
                     </div>
                     <div>
-                        <p class="text-xs text-slate-600 leading-relaxed">Your plan expires in <span
-                                class="font-bold text-slate-800">3 days</span>. <a href="#"
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">Your plan expires in <span
+                                class="font-bold text-slate-800 dark:text-slate-100">3 days</span>. <a href="#"
                                 class="text-primary hover:underline">Renew now</a></p>
                     </div>
                 </div>
@@ -417,9 +445,9 @@
                         <i class="fas fa-file-alt"></i>
                     </div>
                     <div>
-                        <p class="text-xs text-slate-600 leading-relaxed">There are <span
-                                class="font-bold text-slate-800">3 new applications</span> to <span
-                                class="font-bold text-slate-800">iOS Developer</span>.</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">There are <span
+                                class="font-bold text-slate-800 dark:text-slate-100">3 new applications</span> to <span
+                                class="font-bold text-slate-800 dark:text-slate-100">iOS Developer</span>.</p>
                     </div>
                 </div>
 
@@ -429,17 +457,18 @@
                         <i class="fas fa-times"></i>
                     </div>
                     <div>
-                        <p class="text-xs text-slate-600 leading-relaxed">Your Teammate, <span
-                                class="font-bold text-slate-800">Wade Wilson</span> has closed the job post of <span
-                                class="font-bold text-slate-800">Design Lead</span>.</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">Your Teammate, <span
+                                class="font-bold text-slate-800 dark:text-slate-100">Wade Wilson</span> has closed the
+                            job post of <span class="font-bold text-slate-800 dark:text-slate-100">Design Lead</span>.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="p-4 border-t border-slate-100">
+        <div class="p-4 border-t border-slate-100 dark:border-slate-700">
             <a href="index.html"
-                class="flex items-center justify-center gap-2 text-slate-500 hover:text-primary transition-colors text-sm font-medium">
+                class="flex items-center justify-center gap-2 text-slate-500 dark:text-slate-400 dark:text-slate-500 hover:text-primary transition-colors text-sm font-medium">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </a>
         </div>
