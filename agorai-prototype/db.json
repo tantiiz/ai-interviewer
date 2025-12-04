@@ -1,0 +1,18 @@
+{
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Software Engineer",
+      "company": "Google",
+      "location": "Mountain View, CA",
+      "description": "We are looking for a software engineer to join our team."
+    },
+    {
+      "id": 2,
+      "title": "Frontend Developer",
+      "company": "Facebook",
+      "location": "Menlo Park, CA",
+      "description": "We are looking for a frontend developer to join our team."
+    }
+  ]
+}

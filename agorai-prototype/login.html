@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agorai | Login</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#0EA5E9',
+                        surface: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-surface text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+    <!-- Navbar (Simplified) -->
+    <nav class="bg-white/80 backdrop-blur-md fixed w-full z-50 border-b border-slate-100">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="assets/images/logo.png" alt="Agorai Logo" class="w-8 h-8">
+                <span class="font-heading font-bold text-xl text-slate-800">Agorai</span>
+            </a>
+            <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-primary transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <main class="flex-1 flex items-center justify-center pt-20 px-6">
+        <div class="w-full max-w-md bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+            <div class="p-8">
+                <div class="text-center mb-8">
+                    <h1 class="text-2xl font-heading font-bold text-slate-900 mb-2">Welcome Back</h1>
+                    <p class="text-slate-500 text-sm">Please select your role to continue</p>
+                </div>
+
+                <!-- Role Selection Tabs -->
+                <div class="flex p-1 bg-slate-50 rounded-xl mb-8" x-data="{ role: 'jobseeker' }">
+                    <button id="tab-jobseeker" onclick="switchRole('jobseeker')"
+                        class="flex-1 py-2.5 text-sm font-bold rounded-lg bg-white text-primary shadow-sm transition-all">
+                        Job Seeker
+                    </button>
+                    <button id="tab-recruiter" onclick="switchRole('recruiter')"
+                        class="flex-1 py-2.5 text-sm font-bold rounded-lg text-slate-500 hover:text-slate-700 transition-all">
+                        Recruiter
+                    </button>
+                </div>
+
+                <!-- Login Form -->
+                <form class="space-y-5" action="#" onsubmit="handleLogin(event)">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Email
+                            Address</label>
+                        <div class="relative">
+                            <input type="email"
+                                class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm"
+                                placeholder="name@example.com">
+                            <i class="fas fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Password</label>
+                        <div class="relative">
+                            <input type="password"
+                                class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm"
+                                placeholder="••••••••">
+                            <i class="fas fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        </div>
+                        <div class="flex justify-end mt-2">
+                            <a href="#" class="text-xs font-bold text-primary hover:underline">Forgot password?</a>
+                        </div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full py-3.5 bg-primary text-white rounded-xl font-bold text-sm hover:bg-indigo-700 transition-all shadow-lg shadow-primary/20 hover:-translate-y-0.5">
+                        Log In
+                    </button>
+                </form>
+
+                <div class="mt-8 text-center">
+                    <p class="text-slate-500 text-sm">
+                        Don't have an account?
+                        <a href="signup.html" class="font-bold text-primary hover:underline">Sign up</a>
+                    </p>
+                </div>
+            </div>
+            <div class="bg-slate-50 p-4 text-center border-t border-slate-100">
+                <p class="text-xs text-slate-400">Protected by reCAPTCHA and subject to the Privacy Policy.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let currentRole = 'jobseeker';
+
+        function switchRole(role) {
+            currentRole = role;
+            const jobseekerTab = document.getElementById('tab-jobseeker');
+            const recruiterTab = document.getElementById('tab-recruiter');
+
+            if (role === 'jobseeker') {
+                jobseekerTab.className = 'flex-1 py-2.5 text-sm font-bold rounded-lg bg-white text-primary shadow-sm transition-all';
+                recruiterTab.className = 'flex-1 py-2.5 text-sm font-bold rounded-lg text-slate-500 hover:text-slate-700 transition-all';
+            } else {
+                recruiterTab.className = 'flex-1 py-2.5 text-sm font-bold rounded-lg bg-white text-primary shadow-sm transition-all';
+                jobseekerTab.className = 'flex-1 py-2.5 text-sm font-bold rounded-lg text-slate-500 hover:text-slate-700 transition-all';
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            // Redirect based on role
+            if (currentRole === 'jobseeker') {
+                window.location.href = 'dashboard-jobseeker.html';
+            } else {
+                window.location.href = 'dashboard-recruiter.html';
+            }
+        }
+    </script>
+</body>
+
+</html>

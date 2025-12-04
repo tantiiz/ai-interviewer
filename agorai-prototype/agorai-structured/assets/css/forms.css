@@ -1,0 +1,19 @@
+/* Form Styles */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.file-upload-zone {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%23CBD5E1FF' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+}

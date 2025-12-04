@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agorai | Recruiter Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5', // Indigo-600 (Purple-ish blue like reference)
+                        secondary: '#0EA5E9',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444',
+                        surface: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans antialiased h-screen flex overflow-hidden">
+    <!-- Left Sidebar -->
+    <aside class="w-64 bg-white border-r border-slate-100 flex flex-col z-20 hidden md:flex">
+        <!-- Logo -->
+        <div class="h-20 flex items-center px-8">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="assets/images/logo.png" alt="Agorai Logo" class="w-8 h-8">
+                <span class="font-heading font-bold text-xl text-slate-800">Agorai</span>
+            </a>
+        </div>
+        <!-- Nav -->
+        <nav class="flex-1 px-4 space-y-2 py-4">
+            <a href="dashboard-recruiter.html"
+                class="flex items-center gap-3 px-4 py-3 text-primary bg-primary/5 rounded-xl font-medium border-l-4 border-primary">
+                <i class="fas fa-th-large w-5"></i> Dashboard
+            </a>
+            <a href="postjob.html"
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                <i class="fas fa-briefcase w-5"></i> Post a Job
+            </a>
+            <a href="manage-applications.html"
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                <i class="fas fa-file-alt w-5"></i> Applications
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                <i class="fas fa-users w-5"></i> Team
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                <i class="fas fa-wallet w-5"></i> Billing
+            </a>
+            <a href="#"
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                <i class="fas fa-chart-bar w-5"></i> Reports
+            </a>
+        </nav>
+        <!-- Upgrade Card -->
+        <div class="p-4">
+            <div
+                class="bg-gradient-to-br from-primary to-indigo-600 rounded-2xl p-4 text-center text-white relative overflow-hidden">
+                <div class="relative z-10">
+                    <div
+                        class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 backdrop-blur-sm">
+                        <i class="fas fa-crown text-white"></i>
+                    </div>
+                    <h4 class="font-bold text-sm mb-1">Upgrade to PRO</h4>
+                    <p class="text-xs text-indigo-100 mb-3">Get more features</p>
+                    <button
+                        class="w-full bg-white text-primary text-xs font-bold py-2 rounded-lg hover:bg-indigo-50 transition-colors">Upgrade</button>
+                </div>
+                <div class="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-10 -mt-10 blur-xl"></div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col overflow-hidden relative">
+        <!-- Header -->
+        <header
+            class="h-20 bg-white/50 backdrop-blur-sm border-b border-slate-100 flex items-center justify-between px-8 sticky top-0 z-10">
+            <div>
+                <h1 class="text-2xl font-bold text-slate-800 font-heading">Dashboard</h1>
+                <p class="text-xs text-slate-400">4 December 2025, Wednesday</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative">
+                    <input type="text" placeholder="Search..."
+                        class="pl-10 pr-4 py-2 bg-white rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none w-64 transition-all">
+                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-8">
+            <!-- Top Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Card 1 -->
+                <div
+                    class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex items-center justify-between">
+                    <div>
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Applications</div>
+                        <div class="text-3xl font-bold text-slate-800">12.2 K</div>
+                    </div>
+                    <div class="relative w-16 h-16 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" fill="transparent"
+                                class="text-slate-100" />
+                            <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" fill="transparent"
+                                stroke-dasharray="175.9" stroke-dashoffset="44" class="text-purple-500" />
+                        </svg>
+                        <span class="absolute text-xs font-bold text-purple-500">+5%</span>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex items-center justify-between">
+                    <div>
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Shortlisted</div>
+                        <div class="text-3xl font-bold text-slate-800">11.1 K</div>
+                    </div>
+                    <div class="relative w-16 h-16 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" fill="transparent"
+                                class="text-slate-100" />
+                            <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" fill="transparent"
+                                stroke-dasharray="175.9" stroke-dashoffset="80" class="text-cyan-400" />
+                        </svg>
+                        <span class="absolute text-xs font-bold text-cyan-500">+14%</span>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex items-center justify-between">
+                    <div>
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">On-Hold</div>
+                        <div class="text-3xl font-bold text-slate-800">6.8 K</div>
+                    </div>
+                    <div class="relative w-16 h-16 flex items-center justify-center">
+                        <svg class="w-full h-full transform -rotate-90">
+                            <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" fill="transparent"
+                                class="text-slate-100" />
+                            <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="4" fill="transparent"
+                                stroke-dasharray="175.9" stroke-dashoffset="120" class="text-orange-400" />
+                        </svg>
+                        <span class="absolute text-xs font-bold text-orange-500">-4%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Middle Left: Charts & Jobs -->
+                <div class="lg:col-span-2 space-y-8">
+                    <!-- Chart Section -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-bold text-lg text-slate-800">Top Active Jobs</h3>
+                            <div class="flex gap-4">
+                                <label
+                                    class="flex items-center gap-2 text-xs font-medium text-slate-600 cursor-pointer">
+                                    <div class="w-8 h-4 bg-purple-500 rounded-full relative">
+                                        <div class="w-2 h-2 bg-white rounded-full absolute top-1 right-1"></div>
+                                    </div>
+                                    Applications
+                                </label>
+                                <label
+                                    class="flex items-center gap-2 text-xs font-medium text-slate-600 cursor-pointer">
+                                    <div class="w-8 h-4 bg-cyan-400 rounded-full relative">
+                                        <div class="w-2 h-2 bg-white rounded-full absolute top-1 right-1"></div>
+                                    </div>
+                                    Shortlisted
+                                </label>
+                            </div>
+                        </div>
+                        <div class="h-64 w-full">
+                            <canvas id="activeJobsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Job List -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-bold text-lg text-slate-800">Job Title</h3>
+                            <span class="text-xs font-bold text-slate-400 uppercase">Applications</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div
+                                class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-xl transition-colors">
+                                <span class="font-medium text-slate-700">Full Stack Developer</span>
+                                <div class="flex items-center gap-4">
+                                    <span class="font-bold text-slate-800">203</span>
+                                    <button
+                                        class="w-8 h-8 rounded-lg border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-colors"><i
+                                            class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-xl transition-colors">
+                                <span class="font-medium text-slate-700">iOS Developer</span>
+                                <div class="flex items-center gap-4">
+                                    <span class="font-bold text-slate-800">121</span>
+                                    <button
+                                        class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center shadow-md shadow-primary/30"><i
+                                            class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-xl transition-colors">
+                                <span class="font-medium text-slate-700">Product Designer</span>
+                                <div class="flex items-center gap-4">
+                                    <span class="font-bold text-slate-800">95</span>
+                                    <button
+                                        class="w-8 h-8 rounded-lg border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-colors"><i
+                                            class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-3 hover:bg-slate-50 rounded-xl transition-colors">
+                                <span class="font-medium text-slate-700">Design Lead</span>
+                                <div class="flex items-center gap-4">
+                                    <span class="font-bold text-slate-800">76</span>
+                                    <button
+                                        class="w-8 h-8 rounded-lg border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-colors"><i
+                                            class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Middle Right: Acquisitions & New Applicants -->
+                <div class="space-y-8">
+                    <!-- Acquisitions -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-bold text-lg text-slate-800">Acquisitions</h3>
+                            <span class="text-xs text-primary font-medium bg-primary/10 px-2 py-1 rounded-lg">This
+                                Month</span>
+                        </div>
+                        <div class="flex h-2 w-full rounded-full overflow-hidden mb-6">
+                            <div class="w-[64%] bg-purple-500"></div>
+                            <div class="w-[18%] bg-cyan-400"></div>
+                            <div class="w-[10%] bg-orange-400"></div>
+                            <div class="w-[8%] bg-red-400"></div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center text-sm">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2 h-2 rounded-full bg-purple-500"></div> <span
+                                        class="text-slate-600">Applications</span>
+                                </div>
+                                <span class="font-bold text-slate-800">64%</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2 h-2 rounded-full bg-cyan-400"></div> <span
+                                        class="text-slate-600">Shortlisted</span>
+                                </div>
+                                <span class="font-bold text-slate-800">18%</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2 h-2 rounded-full bg-orange-400"></div> <span
+                                        class="text-slate-600">On-hold</span>
+                                </div>
+                                <span class="font-bold text-slate-800">10%</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-2 h-2 rounded-full bg-red-400"></div> <span
+                                        class="text-slate-600">Rejected</span>
+                                </div>
+                                <span class="font-bold text-slate-800">8%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- New Applicants -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="font-bold text-lg text-slate-800">New Applicants</h3>
+                            <span
+                                class="text-xs text-primary font-medium bg-primary/10 px-2 py-1 rounded-lg">Today</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Douglas"
+                                    class="w-10 h-10 rounded-full bg-slate-100">
+                                <div>
+                                    <div class="font-bold text-sm text-slate-800">Douglas Ray</div>
+                                    <div class="text-xs text-slate-500">Applied for <span
+                                            class="text-slate-700 font-medium">iOS Developer</span></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Elizabeth"
+                                    class="w-10 h-10 rounded-full bg-slate-100">
+                                <div>
+                                    <div class="font-bold text-sm text-slate-800">Elizabeth Martin</div>
+                                    <div class="text-xs text-slate-500">Applied for <span
+                                            class="text-slate-700 font-medium">Full Stack Developer</span></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Emma"
+                                    class="w-10 h-10 rounded-full bg-slate-100">
+                                <div>
+                                    <div class="font-bold text-sm text-slate-800">Emma Wade</div>
+                                    <div class="text-xs text-slate-500">Applied for <span
+                                            class="text-slate-700 font-medium">Product Designer</span></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Teresa"
+                                    class="w-10 h-10 rounded-full bg-slate-100">
+                                <div>
+                                    <div class="font-bold text-sm text-slate-800">Teresa Reyes</div>
+                                    <div class="text-xs text-slate-500">Applied for <span
+                                            class="text-slate-700 font-medium">Design Lead</span></div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Crystal"
+                                    class="w-10 h-10 rounded-full bg-slate-100">
+                                <div>
+                                    <div class="font-bold text-sm text-slate-800">Crystal Austin</div>
+                                    <div class="text-xs text-slate-500">Applied for <span
+                                            class="text-slate-700 font-medium">Marketing Manager</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="w-80 bg-white border-l border-slate-100 hidden xl:flex flex-col z-20">
+        <!-- Profile -->
+        <div class="p-8 text-center border-b border-slate-100">
+            <div class="relative inline-block">
+                <img src="https://ui-avatars.com/api/?name=Angelina+Julie&background=FFEDD5&color=C2410C"
+                    class="w-20 h-20 rounded-full mx-auto mb-4 border-4 border-orange-50">
+            </div>
+            <h3 class="font-bold text-lg text-slate-800">Angelina Julie</h3>
+            <p class="text-sm text-slate-500">Recruiting Manager</p>
+        </div>
+
+        <!-- Messages -->
+        <div class="p-6 border-b border-slate-100 flex-1 overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-slate-800">Messages</h3>
+                <button class="text-slate-400 hover:text-primary"><i class="far fa-edit"></i></button>
+            </div>
+            <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Carol"
+                        class="w-10 h-10 rounded-full bg-slate-100">
+                    <div>
+                        <div class="font-bold text-sm text-slate-800">Carol Ferdina</div>
+                        <p class="text-xs text-slate-500 line-clamp-2">Have you planned for any deadline regarding
+                            the...</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Rob"
+                        class="w-10 h-10 rounded-full bg-slate-100">
+                    <div>
+                        <div class="font-bold text-sm text-slate-800">Rob Dial</div>
+                        <p class="text-xs text-slate-500 line-clamp-2">The candidate has been shortlisted for the...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity -->
+        <div class="p-6 flex-1 overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-slate-800">Activity</h3>
+                <button class="text-slate-400 hover:text-primary"><i class="far fa-bell"></i></button>
+            </div>
+            <div class="space-y-6 relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-4 top-2 bottom-2 w-0.5 bg-slate-100"></div>
+
+                <div class="flex gap-4 relative">
+                    <div
+                        class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center text-red-500 z-10 shrink-0 border-4 border-white">
+                        <i class="fas fa-exclamation"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-600 leading-relaxed">Your plan expires in <span
+                                class="font-bold text-slate-800">3 days</span>. <a href="#"
+                                class="text-primary hover:underline">Renew now</a></p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 relative">
+                    <div
+                        class="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-green-500 z-10 shrink-0 border-4 border-white">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-600 leading-relaxed">There are <span
+                                class="font-bold text-slate-800">3 new applications</span> to <span
+                                class="font-bold text-slate-800">iOS Developer</span>.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 relative">
+                    <div
+                        class="w-8 h-8 rounded-full bg-yellow-50 flex items-center justify-center text-yellow-500 z-10 shrink-0 border-4 border-white">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-600 leading-relaxed">Your Teammate, <span
+                                class="font-bold text-slate-800">Wade Wilson</span> has closed the job post of <span
+                                class="font-bold text-slate-800">Design Lead</span>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-4 border-t border-slate-100">
+            <a href="index.html"
+                class="flex items-center justify-center gap-2 text-slate-500 hover:text-primary transition-colors text-sm font-medium">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+    </aside>
+
+    <script>
+        // Chart.js Implementation
+        const ctx = document.getElementById('activeJobsChart').getContext('2d');
+
+        // Gradient for Applications
+        const gradientApps = ctx.createLinearGradient(0, 0, 0, 400);
+        gradientApps.addColorStop(0, 'rgba(168, 85, 247, 0.2)'); // Purple
+        gradientApps.addColorStop(1, 'rgba(168, 85, 247, 0)');
+
+        // Gradient for Shortlisted
+        const gradientShort = ctx.createLinearGradient(0, 0, 0, 400);
+        gradientShort.addColorStop(0, 'rgba(34, 211, 238, 0.2)'); // Cyan
+        gradientShort.addColorStop(1, 'rgba(34, 211, 238, 0)');
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [
+                    {
+                        label: 'Applications',
+                        data: [30, 50, 40, 60, 80, 70, 90],
+                        borderColor: '#A855F7', // Purple-500
+                        backgroundColor: gradientApps,
+                        borderWidth: 3,
+                        pointBackgroundColor: '#fff',
+                        pointBorderColor: '#A855F7',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'Shortlisted',
+                        data: [20, 30, 25, 40, 50, 45, 60],
+                        borderColor: '#22D3EE', // Cyan-400
+                        backgroundColor: gradientShort,
+                        borderWidth: 3,
+                        pointBackgroundColor: '#fff',
+                        pointBorderColor: '#22D3EE',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        tension: 0.4,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#fff',
+                        titleColor: '#1e293b',
+                        bodyColor: '#475569',
+                        borderColor: '#e2e8f0',
+                        borderWidth: 1,
+                        padding: 10,
+                        displayColors: true,
+                        usePointStyle: true,
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#f1f5f9',
+                            borderDash: [5, 5]
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: {
+                                size: 10
+                            }
+                        },
+                        border: {
+                            display: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            font: {
+                                size: 10
+                            }
+                        },
+                        border: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

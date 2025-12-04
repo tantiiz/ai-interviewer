@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agorai | Find Jobs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#0EA5E9',
+                        surface: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans antialiased h-screen flex overflow-hidden">
+    <!-- Left Sidebar -->
+    <aside class="w-64 bg-white border-r border-slate-100 flex flex-col z-20 hidden md:flex">
+        <div class="h-20 flex items-center px-8">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="assets/images/logo.png" alt="Agorai Logo" class="w-8 h-8">
+                <span class="font-heading font-bold text-xl text-slate-800">Agorai</span>
+            </a>
+        </div>
+        <nav class="flex-1 px-4 space-y-2 py-4">
+            <a href="dashboard-jobseeker.html"
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                <i class="fas fa-th-large w-5"></i> Dashboard
+            </a>
+            <a href="findjobs.html"
+                class="flex items-center gap-3 px-4 py-3 text-primary bg-primary/5 rounded-xl font-medium border-l-4 border-primary">
+                <i class="fas fa-search w-5"></i> Find Jobs
+            </a>
+            <a href="myapplication.html"
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                <i class="fas fa-file-alt w-5"></i> My Applications
+            </a>
+            <a href="interview.html"
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                <i class="fas fa-video w-5"></i> Interviews
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col overflow-hidden relative">
+        <!-- Header -->
+        <header
+            class="h-20 bg-white/50 backdrop-blur-sm border-b border-slate-100 flex items-center justify-between px-8 sticky top-0 z-10">
+            <h1 class="text-2xl font-bold text-slate-800 font-heading">Find Jobs</h1>
+            <div class="flex items-center gap-4">
+                <div class="relative hidden md:block">
+                    <input type="text" placeholder="Search for jobs..."
+                        class="pl-10 pr-4 py-2 bg-white rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none w-64 transition-all">
+                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                </div>
+                <div class="flex items-center gap-3 pl-4 border-l border-slate-200">
+                    <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                        class="w-9 h-9 rounded-full border-2 border-white shadow-sm">
+                    <div class="hidden md:block">
+                        <div class="text-sm font-bold text-slate-800">John Doe</div>
+                        <div class="text-xs text-slate-500">Software Engineer</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-8">
+            <div class="grid grid-cols-1 gap-6">
+                <!-- Job Card 1 -->
+                <div
+                    class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all group">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-4">
+                            <div class="w-16 h-16 rounded-xl bg-slate-50 flex items-center justify-center text-3xl">
+                                <i class="fab fa-amazon text-orange-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-xl">Backend Engineer</h3>
+                                <p class="text-slate-500">Amazon • Seattle, WA</p>
+                                <div class="flex gap-2 mt-3">
+                                    <span
+                                        class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">Full-time</span>
+                                    <span
+                                        class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">$130k
+                                        - $170k</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            class="px-6 py-2 bg-primary text-white rounded-xl font-medium text-sm hover:bg-indigo-700 transition-colors shadow-lg shadow-primary/20">Apply
+                            Now</button>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-slate-50">
+                        <p class="text-sm text-slate-600 line-clamp-2">Join our AWS team to build scalable cloud
+                            infrastructure. We are looking for experienced backend engineers with strong Java and
+                            distributed systems knowledge.</p>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div
+                    class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all group">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-4">
+                            <div class="w-16 h-16 rounded-xl bg-slate-50 flex items-center justify-center text-3xl">
+                                <i class="fab fa-facebook text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-xl">Product Manager</h3>
+                                <p class="text-slate-500">Meta • Menlo Park, CA</p>
+                                <div class="flex gap-2 mt-3">
+                                    <span
+                                        class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">Full-time</span>
+                                    <span
+                                        class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">$150k
+                                        - $200k</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            class="px-6 py-2 bg-primary text-white rounded-xl font-medium text-sm hover:bg-indigo-700 transition-colors shadow-lg shadow-primary/20">Apply
+                            Now</button>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-slate-50">
+                        <p class="text-sm text-slate-600 line-clamp-2">Lead the development of new social features for
+                            Instagram. We need a product manager with a strong design sense and data-driven mindset.</p>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div
+                    class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all group">
+                    <div class="flex justify-between items-start">
+                        <div class="flex gap-4">
+                            <div class="w-16 h-16 rounded-xl bg-slate-50 flex items-center justify-center text-3xl">
+                                <i class="fab fa-airbnb text-red-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-slate-800 text-xl">UX Researcher</h3>
+                                <p class="text-slate-500">Airbnb • Remote</p>
+                                <div class="flex gap-2 mt-3">
+                                    <span
+                                        class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">Contract</span>
+                                    <span
+                                        class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">$80/hr</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button
+                            class="px-6 py-2 bg-primary text-white rounded-xl font-medium text-sm hover:bg-indigo-700 transition-colors shadow-lg shadow-primary/20">Apply
+                            Now</button>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-slate-50">
+                        <p class="text-sm text-slate-600 line-clamp-2">Conduct user research to improve the guest
+                            booking experience. You will work closely with designers and product teams to gather
+                            insights.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

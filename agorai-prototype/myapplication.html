@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agorai | My Applications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#0EA5E9',
+                        surface: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans antialiased h-screen flex overflow-hidden">
+    <!-- Left Sidebar -->
+    <aside class="w-64 bg-white border-r border-slate-100 flex flex-col z-20 hidden md:flex">
+        <div class="h-20 flex items-center px-8">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="assets/images/logo.png" alt="Agorai Logo" class="w-8 h-8">
+                <span class="font-heading font-bold text-xl text-slate-800">Agorai</span>
+            </a>
+        </div>
+        <nav class="flex-1 px-4 space-y-2 py-4">
+            <a href="dashboard-jobseeker.html"
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                <i class="fas fa-th-large w-5"></i> Dashboard
+            </a>
+            <a href="findjobs.html"
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                <i class="fas fa-search w-5"></i> Find Jobs
+            </a>
+            <a href="myapplication.html"
+                class="flex items-center gap-3 px-4 py-3 text-primary bg-primary/5 rounded-xl font-medium border-l-4 border-primary">
+                <i class="fas fa-file-alt w-5"></i> My Applications
+            </a>
+            <a href="interview.html"
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-slate-50 hover:text-slate-900 rounded-xl font-medium transition-colors">
+                <i class="fas fa-video w-5"></i> Interviews
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col overflow-hidden relative">
+        <!-- Header -->
+        <header
+            class="h-20 bg-white/50 backdrop-blur-sm border-b border-slate-100 flex items-center justify-between px-8 sticky top-0 z-10">
+            <h1 class="text-2xl font-bold text-slate-800 font-heading">My Applications</h1>
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-3 pl-4 border-l border-slate-200">
+                    <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                        class="w-9 h-9 rounded-full border-2 border-white shadow-sm">
+                    <div class="hidden md:block">
+                        <div class="text-sm font-bold text-slate-800">John Doe</div>
+                        <div class="text-xs text-slate-500">Software Engineer</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex-1 overflow-y-auto p-8">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider">
+                                <th class="p-4 font-medium">Company</th>
+                                <th class="p-4 font-medium">Role</th>
+                                <th class="p-4 font-medium">Applied Date</th>
+                                <th class="p-4 font-medium">Status</th>
+                                <th class="p-4 font-medium">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-sm">
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-4 flex items-center gap-3">
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-lg">
+                                        <i class="fab fa-google text-red-500"></i>
+                                    </div>
+                                    <span class="font-bold text-slate-800">Google</span>
+                                </td>
+                                <td class="p-4 text-slate-600">Product Designer</td>
+                                <td class="p-4 text-slate-500">Dec 01, 2025</td>
+                                <td class="p-4"><span
+                                        class="px-2 py-1 rounded bg-yellow-50 text-yellow-600 text-xs font-bold">In
+                                        Review</span></td>
+                                <td class="p-4"><button class="text-primary hover:underline font-medium">View
+                                        Details</button></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-4 flex items-center gap-3">
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-lg">
+                                        <i class="fab fa-microsoft text-blue-500"></i>
+                                    </div>
+                                    <span class="font-bold text-slate-800">Microsoft</span>
+                                </td>
+                                <td class="p-4 text-slate-600">Frontend Developer</td>
+                                <td class="p-4 text-slate-500">Nov 28, 2025</td>
+                                <td class="p-4"><span
+                                        class="px-2 py-1 rounded bg-blue-50 text-blue-600 text-xs font-bold">Interview</span>
+                                </td>
+                                <td class="p-4"><button class="text-primary hover:underline font-medium">View
+                                        Details</button></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-4 flex items-center gap-3">
+                                    <div
+                                        class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-lg">
+                                        <i class="fab fa-spotify text-green-500"></i>
+                                    </div>
+                                    <span class="font-bold text-slate-800">Spotify</span>
+                                </td>
+                                <td class="p-4 text-slate-600">Data Analyst</td>
+                                <td class="p-4 text-slate-500">Nov 20, 2025</td>
+                                <td class="p-4"><span
+                                        class="px-2 py-1 rounded bg-slate-100 text-slate-500 text-xs font-bold">Rejected</span>
+                                </td>
+                                <td class="p-4"><button class="text-primary hover:underline font-medium">View
+                                        Details</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

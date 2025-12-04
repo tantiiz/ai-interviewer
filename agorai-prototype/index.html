@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agorai | AgorAl: An AI-Powered HR Assistant for Interviews and Assessments
+</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#0EA5E9',
+                        surface: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-surface text-slate-800 font-sans antialiased">
+    <!-- Navbar -->
+    <nav class="bg-white/80 backdrop-blur-md fixed w-full z-50 border-b border-slate-100">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="assets/images/logo.png" alt="Agorai Logo" class="w-8 h-8">
+                <span class="font-heading font-bold text-xl text-slate-800">Agorai</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#features"
+                    class="text-sm font-medium text-slate-600 hover:text-primary transition-colors">Features</a>
+                <a href="#pricing"
+                    class="text-sm font-medium text-slate-600 hover:text-primary transition-colors">Pricing</a>
+                <a href="#" class="text-sm font-medium text-slate-600 hover:text-primary transition-colors">About</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="login.html"
+                    class="text-sm font-medium text-slate-600 hover:text-primary transition-colors">Login</a>
+                <a href="signup.html"
+                    class="px-5 py-2.5 bg-primary text-white rounded-xl text-sm font-bold hover:bg-indigo-700 transition-colors shadow-lg shadow-primary/20">Sign
+                    Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 overflow-hidden">
+        <div class="container mx-auto px-6 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 text-primary rounded-full text-xs font-bold uppercase tracking-wider mb-8">
+                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                AI-Powered Hiring 
+            </div>
+            <h1 class="text-5xl md:text-7xl font-heading font-bold text-slate-900 mb-6 leading-tight">
+                Hiring Automation <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Powered by
+                    AI</span>
+            </h1>
+            <p class="text-lg text-slate-500 mb-10 max-w-2xl mx-auto">
+                Streamline your recruitment process with AI video interviews, automated resume parsing, and smart
+                candidate matching.
+            </p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                <a href="login.html"
+                    class="px-8 py-4 bg-primary text-white rounded-2xl font-bold text-lg hover:bg-indigo-700 transition-all shadow-xl shadow-primary/30 hover:-translate-y-1">
+                    Start Hiring
+                </a>
+                <a href="signup.html"
+                    class="px-8 py-4 bg-white text-slate-700 border border-slate-200 rounded-2xl font-bold text-lg hover:bg-slate-50 transition-all hover:-translate-y-1">
+                    Find a Job
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Preview -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-heading font-bold text-slate-900 mb-4">Why Choose Agorai?</h2>
+                <p class="text-slate-500 max-w-xl mx-auto">Our platform uses advanced AI to automate the tedious parts
+                    of hiring, so you can focus on people.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="p-8 rounded-3xl bg-surface border border-slate-100 hover:shadow-xl transition-shadow group">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">AI Video Interviewer</h3>
+                    <p class="text-slate-500 leading-relaxed">Conduct automated first-round interviews with our AI
+                        avatar that analyzes responses and soft skills.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="p-8 rounded-3xl bg-surface border border-slate-100 hover:shadow-xl transition-shadow group">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Resume Parsing</h3>
+                    <p class="text-slate-500 leading-relaxed">Instantly extract data from resumes and match candidates
+                        to job descriptions with high accuracy.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="p-8 rounded-3xl bg-surface border border-slate-100 hover:shadow-xl transition-shadow group">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-green-100 text-green-600 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Automated Comms</h3>
+                    <p class="text-slate-500 leading-relaxed">Keep candidates in the loop with automated emails, status
+                        updates, and interview scheduling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-surface">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-heading font-bold text-slate-900 mb-4">Simple Pricing</h2>
+                <p class="text-slate-500 max-w-xl mx-auto">Choose the plan that fits your hiring needs.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Free -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                    <div class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Free</div>
+                    <div class="text-4xl font-bold text-slate-900 mb-6">Free<span
+                            class="text-lg text-slate-400 font-normal">/mo</span></div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-slate-600"><i class="fas fa-check text-green-500"></i> 1
+                            Active Job Post</li>
+                        <li class="flex items-center gap-3 text-slate-600"><i class="fas fa-check text-green-500"></i>
+                            10 AI Interviews</li>
+                        <li class="flex items-center gap-3 text-slate-600"><i class="fas fa-check text-green-500"></i>
+                            Basic Analytics</li>
+                    </ul>
+                    <button
+                        class="w-full py-3 rounded-xl border border-slate-200 font-bold text-slate-600 hover:bg-slate-50 transition-colors">Get
+                        Started</button>
+                </div>
+                <!-- Starter -->
+                <div class="bg-white p-8 rounded-3xl border-2 border-primary shadow-xl relative">
+                    <div
+                        class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold uppercase">
+                        Popular</div>
+                    <div class="text-sm font-bold text-primary uppercase tracking-wider mb-2">Starter</div>
+                    <div class="text-4xl font-bold text-slate-900 mb-6">₱3000<span
+                            class="text-lg text-slate-400 font-normal">/mo</span></div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-slate-600"><i class="fas fa-check text-green-500"></i> 5
+                            Active Job Posts</li>
+                        <li class="flex items-center gap-3 text-slate-600"><i class="fas fa-check text-green-500"></i>
+                            100 AI Interviews</li>
+                        <li class="flex items-center gap-3 text-slate-600"><i class="fas fa-check text-green-500"></i>
+                            Advanced Analytics</li>
+                    </ul>
+                    <button
+                        class="w-full py-3 rounded-xl bg-primary text-white font-bold hover:bg-indigo-700 transition-colors shadow-lg shadow-primary/20">Start
+                        Free Trial</button>
+                </div>
+                <!-- Pro -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+                    <div class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Pro</div>
+                    <div class="text-4xl font-bold text-slate-900 mb-6">₱5000<span
+                            class="text-lg text-slate-400 font-normal">/mo</span></div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-slate-600"><i class="fas fa-check text-green-500"></i>
+                            Unlimited Job Posts</li>
+                        <li class="flex items-center gap-3 text-slate-600"><i class="fas fa-check text-green-500"></i>
+                            Unlimited AI Interviews</li>
+                        <li class="flex items-center gap-3 text-slate-600"><i class="fas fa-check text-green-500"></i>
+                            Custom Branding</li>
+                    </ul>
+                    <button
+                        class="w-full py-3 rounded-xl border border-slate-200 font-bold text-slate-600 hover:bg-slate-50 transition-colors">Contact
+                        Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-slate-400">&copy; 2025 Agorai. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

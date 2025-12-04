@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agorai | Interview Session</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#0EA5E9',
+                        surface: '#F8FAFC',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-900 h-screen w-screen overflow-hidden relative flex items-center justify-center">
+    <!-- Video Feed -->
+    <video id="camera-feed" class="absolute inset-0 w-full h-full object-cover transform scale-x-[-1]" autoplay
+        playsinline muted></video>
+
+    <!-- Overlay Gradient -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 pointer-events-none"></div>
+
+    <!-- Top Bar -->
+    <div class="absolute top-0 left-0 w-full p-6 flex justify-between items-center z-10">
+        <div class="flex items-center gap-2">
+            <img src="assets/images/logo.png" alt="Agorai" class="w-8 h-8 opacity-80">
+            <span class="text-white/80 font-heading font-bold">Agorai Interview</span>
+        </div>
+        <div class="flex items-center gap-3">
+            <div
+                class="flex items-center gap-2 px-3 py-1.5 bg-red-500/90 text-white rounded-full text-xs font-bold animate-pulse shadow-lg">
+                <div class="w-2 h-2 bg-white rounded-full"></div>
+                REC <span id="recording-timer">00:00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Question Card (Bottom Right) -->
+    <div class="absolute bottom-8 right-8 z-20 w-full max-w-md">
+        <div class="bg-white/95 backdrop-blur-xl p-6 rounded-3xl shadow-2xl border border-white/20 transform transition-all duration-500"
+            id="question-card">
+            <div class="flex justify-between items-center mb-4">
+                <span
+                    class="text-xs font-bold text-primary uppercase tracking-wider bg-indigo-50 px-2 py-1 rounded-lg">Question
+                    <span id="q-current">1</span>/3</span>
+                <div class="flex gap-1">
+                    <div class="w-2 h-2 rounded-full bg-primary" id="dot-1"></div>
+                    <div class="w-2 h-2 rounded-full bg-slate-200" id="dot-2"></div>
+                    <div class="w-2 h-2 rounded-full bg-slate-200" id="dot-3"></div>
+                </div>
+            </div>
+
+            <h2 class="text-xl font-bold text-slate-800 mb-6 leading-snug min-h-[3.5rem]" id="question-text">
+                Tell us about a challenging project you worked on and how you overcame the obstacles.
+            </h2>
+
+            <div class="flex gap-3">
+                <button onclick="nextQuestion()" id="next-btn"
+                    class="flex-1 py-3.5 bg-primary text-white rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-lg shadow-primary/25 hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    Next Question <i class="fas fa-arrow-right"></i>
+                </button>
+                <button onclick="endInterview()"
+                    class="px-5 py-3.5 bg-red-50 text-red-500 rounded-xl font-bold hover:bg-red-100 transition-colors border border-red-100"
+                    title="End Interview">
+                    <i class="fas fa-stop"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Overlay -->
+    <div id="start-overlay"
+        class="absolute inset-0 z-50 bg-slate-900 flex flex-col items-center justify-center text-center p-6">
+        <div
+            class="w-24 h-24 bg-slate-800 rounded-full flex items-center justify-center text-primary text-4xl mb-8 shadow-2xl shadow-primary/20 animate-bounce">
+            <i class="fas fa-video"></i>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4">Ready for your interview?</h1>
+        <p class="text-slate-400 max-w-md mb-10 text-lg">We'll ask you 3 questions. Your responses will be recorded and
+            analyzed by our AI.</p>
+        <button onclick="startSession()"
+            class="px-10 py-4 bg-primary text-white rounded-2xl font-bold text-lg hover:bg-indigo-600 transition-all shadow-xl shadow-primary/30 hover:scale-105">
+            Start Session
+        </button>
+    </div>
+
+    <script>
+        const questions = [
+            "Tell us about a challenging project you worked on and how you overcame the obstacles.",
+            "How do you prioritize tasks when you have multiple tight deadlines?",
+            "Why do you think you are a good fit for this role at Agorai?"
+        ];
+
+        let currentQuestionIndex = 0;
+        let stream = null;
+        let mediaRecorder = null;
+        let recordedChunks = [];
+        let timerInterval;
+        let seconds = 0;
+
+        const videoElement = document.getElementById('camera-feed');
+        const questionText = document.getElementById('question-text');
+        const qCurrent = document.getElementById('q-current');
+        const nextBtn = document.getElementById('next-btn');
+        const recordingTimer = document.getElementById('recording-timer');
+        const startOverlay = document.getElementById('start-overlay');
+
+        async function startSession() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                videoElement.srcObject = stream;
+                startOverlay.classList.add('hidden');
+                startRecording();
+                startTimer();
+            } catch (err) {
+                alert("Please allow camera and microphone access to continue.");
+                console.error(err);
+            }
+        }
+
+        function startRecording() {
+            recordedChunks = [];
+            mediaRecorder = new MediaRecorder(stream);
+
+            mediaRecorder.ondataavailable = (event) => {
+                if (event.data.size > 0) {
+                    recordedChunks.push(event.data);
+                }
+            };
+
+            mediaRecorder.onstop = saveRecording;
+            mediaRecorder.start();
+        }
+
+        function saveRecording() {
+            const blob = new Blob(recordedChunks, { type: 'video/webm' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = `agorai-interview-${new Date().toISOString().slice(0, 10)}.webm`;
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                // Update Question UI
+                questionText.style.opacity = '0';
+                setTimeout(() => {
+                    questionText.textContent = questions[currentQuestionIndex];
+                    questionText.style.opacity = '1';
+                    qCurrent.textContent = currentQuestionIndex + 1;
+
+                    // Update dots
+                    document.querySelectorAll('[id^="dot-"]').forEach((dot, idx) => {
+                        dot.className = idx <= currentQuestionIndex ? "w-2 h-2 rounded-full bg-primary" : "w-2 h-2 rounded-full bg-slate-200";
+                    });
+
+                    if (currentQuestionIndex === questions.length - 1) {
+                        nextBtn.innerHTML = 'Finish Interview <i class="fas fa-check"></i>';
+                    }
+                }, 200);
+            } else {
+                endInterview();
+            }
+        }
+
+        function endInterview() {
+            clearInterval(timerInterval);
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                mediaRecorder.stop();
+            }
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+
+            // Show completion message
+            document.body.innerHTML = `
+                <div class="bg-slate-900 h-screen w-screen flex flex-col items-center justify-center text-center p-6">
+                    <div class="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center text-green-500 text-5xl mb-6">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h1 class="text-4xl font-heading font-bold text-white mb-4">Interview Completed!</h1>
+                    <p class="text-slate-400 mb-8">Your recording has been saved. You can close this tab now.</p>
+                    <button onclick="window.close()" class="px-8 py-3 bg-slate-800 text-white rounded-xl font-bold hover:bg-slate-700 transition-colors">
+                        Close Session
+                    </button>
+                </div>
+            `;
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                seconds++;
+                const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+                const secs = (seconds % 60).toString().padStart(2, '0');
+                recordingTimer.textContent = `${mins}:${secs}`;
+            }, 1000);
+        }
+
+        // Auto-stop on visibility change (tab switch)
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && stream) {
+                endInterview();
+                alert("Interview stopped because you switched tabs.");
+            }
+        });
+
+        // Auto-stop on unload
+        window.addEventListener('beforeunload', () => {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+        });
+    </script>
+</body>
+
+</html>
