@@ -12,8 +12,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap"
         rel="stylesheet">
+    <script src="assets/js/theme.js"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -31,37 +33,47 @@
     </script>
 </head>
 
-<body class="bg-surface text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+<body
+    class="bg-surface dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col">
     <!-- Navbar (Simplified) -->
-    <nav class="bg-white/80 backdrop-blur-md fixed w-full z-50 border-b border-slate-100">
+    <nav
+        class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md fixed w-full z-50 border-b border-slate-100 dark:border-slate-700">
         <div class="container mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-2">
                 <img src="assets/images/logo.png" alt="Agorai Logo" class="w-8 h-8">
-                <span class="font-heading font-bold text-xl text-slate-800">Agorai</span>
+                <span class="font-heading font-bold text-xl text-slate-800 dark:text-white">Agorai</span>
             </a>
-            <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-primary transition-colors">
-                <i class="fas fa-arrow-left mr-2"></i> Back to Home
-            </a>
+            <div class="flex items-center gap-4">
+                <a href="index.html"
+                    class="text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to Home
+                </a>
+                <button onclick="toggleTheme()"
+                    class="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <!-- Login Section -->
     <main class="flex-1 flex items-center justify-center pt-20 px-6">
-        <div class="w-full max-w-md bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+        <div
+            class="w-full max-w-md bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-700 overflow-hidden">
             <div class="p-8">
                 <div class="text-center mb-8">
-                    <h1 class="text-2xl font-heading font-bold text-slate-900 mb-2">Welcome Back</h1>
-                    <p class="text-slate-500 text-sm">Please select your role to continue</p>
+                    <h1 class="text-2xl font-heading font-bold text-slate-900 dark:text-white mb-2">Welcome Back</h1>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">Please select your role to continue</p>
                 </div>
 
                 <!-- Role Selection Tabs -->
-                <div class="flex p-1 bg-slate-50 rounded-xl mb-8" x-data="{ role: 'jobseeker' }">
+                <div class="flex p-1 bg-slate-50 dark:bg-slate-700 rounded-xl mb-8" x-data="{ role: 'jobseeker' }">
                     <button id="tab-jobseeker" onclick="switchRole('jobseeker')"
-                        class="flex-1 py-2.5 text-sm font-bold rounded-lg bg-white text-primary shadow-sm transition-all">
+                        class="flex-1 py-2.5 text-sm font-bold rounded-lg bg-white dark:bg-slate-600 text-primary dark:text-white shadow-sm transition-all">
                         Job Seeker
                     </button>
                     <button id="tab-recruiter" onclick="switchRole('recruiter')"
-                        class="flex-1 py-2.5 text-sm font-bold rounded-lg text-slate-500 hover:text-slate-700 transition-all">
+                        class="flex-1 py-2.5 text-sm font-bold rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-all">
                         Recruiter
                     </button>
                 </div>
@@ -69,23 +81,26 @@
                 <!-- Login Form -->
                 <form class="space-y-5" action="#" onsubmit="handleLogin(event)">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Email
+                        <label
+                            class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Email
                             Address</label>
                         <div class="relative">
                             <input type="email"
-                                class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm"
+                                class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm"
                                 placeholder="name@example.com">
-                            <i class="fas fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <i
+                                class="fas fa-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500"></i>
                         </div>
                     </div>
                     <div>
                         <label
-                            class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Password</label>
+                            class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2">Password</label>
                         <div class="relative">
                             <input type="password"
-                                class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm"
+                                class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-800 dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-sm"
                                 placeholder="••••••••">
-                            <i class="fas fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                            <i
+                                class="fas fa-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500"></i>
                         </div>
                         <div class="flex justify-end mt-2">
                             <a href="#" class="text-xs font-bold text-primary hover:underline">Forgot password?</a>
@@ -99,14 +114,16 @@
                 </form>
 
                 <div class="mt-8 text-center">
-                    <p class="text-slate-500 text-sm">
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">
                         Don't have an account?
                         <a href="signup.html" class="font-bold text-primary hover:underline">Sign up</a>
                     </p>
                 </div>
             </div>
-            <div class="bg-slate-50 p-4 text-center border-t border-slate-100">
-                <p class="text-xs text-slate-400">Protected by reCAPTCHA and subject to the Privacy Policy.</p>
+            <div
+                class="bg-slate-50 dark:bg-slate-700/50 p-4 text-center border-t border-slate-100 dark:border-slate-700">
+                <p class="text-xs text-slate-400 dark:text-slate-500">Protected by reCAPTCHA and subject to the Privacy
+                    Policy.</p>
             </div>
         </div>
     </main>
@@ -120,11 +137,11 @@
             const recruiterTab = document.getElementById('tab-recruiter');
 
             if (role === 'jobseeker') {
-                jobseekerTab.className = 'flex-1 py-2.5 text-sm font-bold rounded-lg bg-white text-primary shadow-sm transition-all';
-                recruiterTab.className = 'flex-1 py-2.5 text-sm font-bold rounded-lg text-slate-500 hover:text-slate-700 transition-all';
+                jobseekerTab.className = 'flex-1 py-2.5 text-sm font-bold rounded-lg bg-white dark:bg-slate-600 text-primary dark:text-white shadow-sm transition-all';
+                recruiterTab.className = 'flex-1 py-2.5 text-sm font-bold rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-all';
             } else {
-                recruiterTab.className = 'flex-1 py-2.5 text-sm font-bold rounded-lg bg-white text-primary shadow-sm transition-all';
-                jobseekerTab.className = 'flex-1 py-2.5 text-sm font-bold rounded-lg text-slate-500 hover:text-slate-700 transition-all';
+                recruiterTab.className = 'flex-1 py-2.5 text-sm font-bold rounded-lg bg-white dark:bg-slate-600 text-primary dark:text-white shadow-sm transition-all';
+                jobseekerTab.className = 'flex-1 py-2.5 text-sm font-bold rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-all';
             }
         }
 
