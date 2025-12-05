@@ -14,6 +14,7 @@
     <script src="assets/js/theme.js"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -93,7 +94,7 @@
     <main class="flex-1 flex flex-col overflow-hidden relative">
         <!-- Header -->
         <header
-            class="h-20 bg-white/50 backdrop-blur-sm border-b border-slate-100 flex items-center justify-between px-8 sticky top-0 z-10">
+            class="h-20 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm border-b border-slate-100 dark:border-slate-700 flex items-center justify-between px-8 sticky top-0 z-10">
             <div>
                 <h1 class="text-2xl font-bold text-slate-800 dark:text-white font-heading">Hello, John! 👋</h1>
                 <p class="text-xs text-slate-400 dark:text-slate-500">Here are your daily job updates.</p>
@@ -101,12 +102,12 @@
             <div class="flex items-center gap-4">
                 <div class="relative hidden md:block">
                     <input type="text" placeholder="Search for jobs..."
-                        class="pl-10 pr-4 py-2 bg-white rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none w-64 transition-all">
+                        class="pl-10 pr-4 py-2 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none w-64 transition-all dark:text-white dark:placeholder-slate-500">
                     <i
                         class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500"></i>
                 </div>
                 <button
-                    class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-500 shadow-sm hover:text-primary transition-colors relative">
+                    class="w-10 h-10 bg-white dark:bg-slate-800 rounded-full flex items-center justify-center text-slate-500 dark:text-slate-400 shadow-sm hover:text-primary transition-colors relative">
                     <i class="fas fa-bell"></i>
                     <span class="absolute top-2 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
                 </button>
@@ -126,7 +127,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <!-- Card 1 -->
                 <div
-                    class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex items-center justify-between group hover:shadow-md transition-all">
+                    class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 flex items-center justify-between group hover:shadow-md transition-all">
                     <div>
                         <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Applications Sent
                         </div>
@@ -139,7 +140,7 @@
                 </div>
                 <!-- Card 2 -->
                 <div
-                    class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex items-center justify-between group hover:shadow-md transition-all">
+                    class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 flex items-center justify-between group hover:shadow-md transition-all">
                     <div>
                         <div class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1">
                             Interviews</div>
@@ -152,7 +153,7 @@
                 </div>
                 <!-- Card 3 -->
                 <div
-                    class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 flex items-center justify-between group hover:shadow-md transition-all">
+                    class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 flex items-center justify-between group hover:shadow-md transition-all">
                     <div>
                         <div class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1">
                             Profile Views</div>
@@ -175,13 +176,14 @@
 
                     <!-- Job Card 1 -->
                     <div
-                        class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all relative overflow-hidden group">
+                        class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-all relative overflow-hidden group">
                         <div
                             class="absolute top-0 left-0 w-1 h-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity">
                         </div>
                         <div class="flex justify-between items-start mb-4">
                             <div class="flex gap-4">
-                                <div class="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-2xl">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-700 flex items-center justify-center text-2xl">
                                     <i class="fab fa-microsoft text-blue-500"></i>
                                 </div>
                                 <div>
@@ -197,17 +199,20 @@
                         </div>
                         <div class="flex gap-2 mb-6">
                             <span
-                                class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">Full-time</span>
-                            <span class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">$120k -
+                                class="px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Full-time</span>
+                            <span
+                                class="px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">$120k
+                                -
                                 $160k</span>
-                            <span class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">Senior
+                            <span
+                                class="px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Senior
                                 Level</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xs text-slate-400 dark:text-slate-500">Posted 2 days ago</span>
                             <div class="flex gap-3">
                                 <button
-                                    class="w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-colors"><i
+                                    class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-600 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-colors"><i
                                         class="far fa-bookmark"></i></button>
                                 <button
                                     class="px-6 py-2 bg-primary text-white rounded-xl font-medium text-sm hover:bg-indigo-700 transition-colors shadow-lg shadow-primary/20">Apply
@@ -218,14 +223,15 @@
 
                     <!-- Job Card 2 -->
                     <div
-                        class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all relative overflow-hidden group">
+                        class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-all relative overflow-hidden group">
                         <div
                             class="absolute top-0 left-0 w-1 h-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity">
                         </div>
                         <div class="flex justify-between items-start mb-4">
                             <div class="flex gap-4">
-                                <div class="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-2xl">
-                                    <i class="fab fa-apple text-slate-800"></i>
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-700 flex items-center justify-center text-2xl">
+                                    <i class="fab fa-apple text-slate-800 dark:text-white"></i>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-slate-800 dark:text-white text-lg">Full Stack Engineer
@@ -239,17 +245,20 @@
                         </div>
                         <div class="flex gap-2 mb-6">
                             <span
-                                class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">Full-time</span>
-                            <span class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">$140k -
+                                class="px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Full-time</span>
+                            <span
+                                class="px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">$140k
+                                -
                                 $180k</span>
-                            <span class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">Mid
+                            <span
+                                class="px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Mid
                                 Level</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xs text-slate-400 dark:text-slate-500">Posted 5 hours ago</span>
                             <div class="flex gap-3">
                                 <button
-                                    class="w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-colors"><i
+                                    class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-600 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-colors"><i
                                         class="far fa-bookmark"></i></button>
                                 <button
                                     class="px-6 py-2 bg-primary text-white rounded-xl font-medium text-sm hover:bg-indigo-700 transition-colors shadow-lg shadow-primary/20">Apply
@@ -260,13 +269,14 @@
 
                     <!-- Job Card 3 -->
                     <div
-                        class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all relative overflow-hidden group">
+                        class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-all relative overflow-hidden group">
                         <div
                             class="absolute top-0 left-0 w-1 h-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity">
                         </div>
                         <div class="flex justify-between items-start mb-4">
                             <div class="flex gap-4">
-                                <div class="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-2xl">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-700 flex items-center justify-center text-2xl">
                                     <i class="fab fa-google text-red-500"></i>
                                 </div>
                                 <div>
@@ -280,17 +290,18 @@
                         </div>
                         <div class="flex gap-2 mb-6">
                             <span
-                                class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">Contract</span>
+                                class="px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Contract</span>
                             <span
-                                class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">$90/hr</span>
-                            <span class="px-3 py-1 rounded-lg bg-slate-50 text-slate-600 text-xs font-medium">Senior
+                                class="px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">$90/hr</span>
+                            <span
+                                class="px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Senior
                                 Level</span>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xs text-slate-400 dark:text-slate-500">Posted 1 day ago</span>
                             <div class="flex gap-3">
                                 <button
-                                    class="w-10 h-10 rounded-xl border border-slate-200 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-colors"><i
+                                    class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-600 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary transition-colors"><i
                                         class="far fa-bookmark"></i></button>
                                 <button
                                     class="px-6 py-2 bg-primary text-white rounded-xl font-medium text-sm hover:bg-indigo-700 transition-colors shadow-lg shadow-primary/20">Apply
@@ -303,7 +314,8 @@
                 <!-- Right Column: Status & Schedule -->
                 <div class="space-y-8">
                     <!-- Application Status -->
-                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
+                    <div
+                        class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-100 dark:border-slate-700">
                         <h3 class="font-bold text-lg text-slate-800 dark:text-white mb-6">Application Status</h3>
                         <div class="relative h-48 w-full flex items-center justify-center">
                             <canvas id="applicationStatusChart"></canvas>
